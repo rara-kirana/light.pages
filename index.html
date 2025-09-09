@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cozy Website</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <p>✨ Loading cozy vibes...</p>
+  </div>
+
+  <!-- Sparkle background -->
+  <div class="sparkles"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#study">Study Material</a></li>
+      <li><a href="#instagram">Instagram</a></li>
+      <li><a href="#messages">Messages</a></li>
+    </ul>
+  </nav>
+
+  <!-- Welcome Section -->
+  <section id="welcome" class="fade-section">
+    <h1>Welcome to My Cozy Space 🌸</h1>
+    <p>Grab a blanket, sip some tea, and feel at home.</p>
+    <img src="images/banner.png" alt="Welcome Banner" class="banner">
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="fade-section">
+    <h2>Gallery 🎨</h2>
+    <p>Here are some cozy pictures and pastel moments I love.</p>
+    <div class="gallery">
+      <div class="circle pink"></div>
+      <div class="circle blue"></div>
+      <div class="circle peach"></div>
+      <div class="circle green"></div>
+      <div class="circle lavender"></div>
+    </div>
+  </section>
+
+  <!-- Study Material Section -->
+  <section id="study" class="fade-section">
+    <h2>Study Material 📚</h2>
+    <p>Notes, resources, and little tips I’ve collected to make studying more cozy and effective.</p>
+    <button class="cozy-btn">Download Study Notes</button>
+  </section>
+
+  <!-- Instagram Section -->
+  <section id="instagram" class="fade-section">
+    <h2>Instagram 📷</h2>
+    <p>Follow me on Instagram for daily cozy vibes and updates!</p>
+    <a href="https://instagram.com/yourusername" target="_blank" class="cozy-btn">Visit My Instagram</a>
+  </section>
+
+  <!-- Visitors' Message Section -->
+  <section id="messages" class="fade-section">
+    <h2>Visitors’ Messages 💌</h2>
+    <p>Leave me a cozy note! ✨</p>
+    <form id="messageForm">
+      <textarea placeholder="Write your message here..." required></textarea>
+      <br>
+      <button type="submit" class="cozy-btn">Send Message</button>
+    </form>
+    <div id="messageBoard"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with love 💕 | Credit: Light Pages</p>
+    <p class="music-credit">
+      Music Credits:  
+      “Good Night – Lofi Cozy Chill Music” (Pixabay, royalty-free).  
+      “Dream Catcher” & “Chill” by Kevin MacLeod (incompetech.com), licensed under CC-BY 3.0.
+    </p>
+  </footer>
+
+  <!-- Background music controls -->
+  <div class="music-toggle">
+    <button id="musicBtn">
+      <span class="icon">🎵</span>
+      <span class="label">Play</span>
+    </button>
+    <audio id="bgMusic" loop></audio>
+  </div>
+
+  <div class="music-playlist">
+    <button id="nextTrack">Next Track ➡️</button>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // ============================
+    // LOADER FADE OUT
+    // ============================
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      loader.classList.add("fade-out");
+      setTimeout(() => loader.style.display = "none", 1000);
+    });
+
+    // ============================
+    // SECTION FADE-IN ON SCROLL
+    // ============================
+    const sections = document.querySelectorAll('.fade-section');
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) sec.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // ============================
+    // SPARKLE BACKGROUND
+    // ============================
+    const sparkleContainer = document.querySelector('.sparkles');
+    const colors = ["#ffd6e0", "#d6eaff", "#ffe8cc", "#e6ffd6", "#f2e1ff"];
+    for (let i = 0; i < 30; i++) {
+      const sparkle = document.createElement("span");
+      sparkle.style.top = Math.random() * 100 + "vh";
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      const size = Math.random() * 6 + 4; 
+      sparkle.style.width = size + "px";
+      sparkle.style.height = size + "px";
+      sparkle.style.animationDelay = (Math.random() * 5) + "s";
+      sparkle.style.animationDuration = (Math.random() * 10 + 8) + "s";
+      sparkleContainer.appendChild(sparkle);
+    }
+
+    // ============================
+    // MUSIC PLAYER WITH PLAYLIST
+    // ============================
+    const musicBtn = document.getElementById("musicBtn");
+    const bgMusic = document.getElementById("bgMusic");
+    const label = musicBtn.querySelector(".label");
+    const nextBtn = document.getElementById("nextTrack");
+
+    const tracks = [
+      "music/good-night.mp3",      // Pixabay, no attribution required
+      "music/dream-catcher.mp3",   // Kevin MacLeod (CC-BY 3.0)
+      "music/chill.mp3"            // Kevin MacLeod (CC-BY 3.0)
+    ];
+
+    let currentTrack = 0;
+    let isPlaying = false;
+    let fadeInterval;
+
+    function fadeIn(audio, duration = 2000) {
+      clearInterval(fadeInterval);
+      audio.volume = 0;
+      audio.src = tracks[currentTrack];
+      audio.play();
+      fadeInterval = setInterval(() => {
+        if (audio.volume < 1) audio.volume = Math.min(1, audio.volume + 0.05);
+        else clearInterval(fadeInterval);
+      }, duration * 0.05);
+    }
+
+    function fadeOut(audio, duration = 2000) {
+      clearInterval(fadeInterval);
+      fadeInterval = setInterval(() => {
+        if (audio.volume > 0) audio.volume = Math.max(0, audio.volume - 0.05);
+        else {
+          audio.pause();
+          clearInterval(fadeInterval);
+        }
+      }, duration * 0.05);
+    }
+
+    musicBtn.addEventListener("click", () => {
+      if (isPlaying) {
+        fadeOut(bgMusic);
+        label.textContent = "Play";
+      } else {
+        fadeIn(bgMusic);
+        label.textContent = "Pause";
+      }
+      isPlaying = !isPlaying;
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentTrack = (currentTrack + 1) % tracks.length;
+      if (isPlaying) fadeIn(bgMusic);
+      else bgMusic.src = tracks[currentTrack];
+    });
+
+    // ============================
+    // VISITORS' MESSAGES (with localStorage)
+    // ============================
+    const form = document.getElementById("messageForm");
+    const board = document.getElementById("messageBoard");
+
+    // Load saved messages
+    let messages = JSON.parse(localStorage.getItem("messages")) || [];
+    messages.forEach(msg => {
+      const msgBox = document.createElement("div");
+      msgBox.classList.add("visitor-message");
+      msgBox.textContent = msg;
+      board.prepend(msgBox);
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const textarea = form.querySelector("textarea");
+      const message = textarea.value.trim();
+      if (message !== "") {
+        messages.push(message);
+        localStorage.setItem("messages", JSON.stringify(messages));
+
+        const msgBox = document.createElement("div");
+        msgBox.classList.add("visitor-message");
+        msgBox.textContent = message;
+        board.prepend(msgBox);
+
+        textarea.value = "";
+      }
+    });
+  </script>
+</body>
+</html>
