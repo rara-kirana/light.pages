@@ -4,12 +4,11 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Light Pages — Autumn Storybook</title>
+  <meta charset="UTF-8">
+  <title>Light Pages – Autumn Storybook</title>
 
-  <!-- CSS dipisah -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/logo.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -18,12 +17,12 @@
   <p>ruang belajar santai — pelan tapi nyampe</p>
 
   <!-- Hamburger Menu -->
-  <div class="menu" onclick="toggleMenu()">☰</div>
+  <div class="menu-button">☰</div>
 </header>
 
 <!-- Collapsible Menu -->
 <div id="collapseMenu" class="collapse-menu">
-  <div class="close-menu" onclick="toggleMenu()">←</div>
+  <div class="close-menu">←</div>
 
   <h3>Light Pages</h3>
   <p class="soft">ruang kecil buat belajar dan bernapas</p>
@@ -31,13 +30,14 @@
   <div class="collapse-section">
     <h4>Kesan & Pesan</h4>
     <textarea id="message" placeholder="tulis pesan anonim di sini..."></textarea>
-    <button onclick="sendMessage()">kirim</button>
+    <button>kirim</button>
+
   </div>
 
   <div class="collapse-section">
     <h4>Temui kami</h4>
-    <a href="#" target="_blank">Instagram</a>
-    <a href="#" target="_blank">TikTok</a>
+    <a href="https://www.instagram.com/light.pages_/" target="_blank">Instagram</a>
+    <a href="javascript:void(0)">TikTok (soon)</a>
   </div>
 </div>
 
@@ -101,7 +101,7 @@
   </div>
 </main>
 
-<<footer>
+<footer>
   <p>© Light Pages — satu halaman juga berarti</p>
 </footer>
 

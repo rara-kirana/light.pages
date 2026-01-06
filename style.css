@@ -78,7 +78,7 @@ footer {
   color: #7a6f66;
 }
 
-.menu {
+.menu-button {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -143,3 +143,9 @@ footer {
 .close-menu:hover {
   opacity: 0.6;
 }
+
+.collapse-menu a {
+  pointer-events: auto;
+  z-index: 1001;
+}
+
