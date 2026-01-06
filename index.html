@@ -1,0 +1,112 @@
+<!-- ========================= -->
+<!-- index.html -->
+<!-- ========================= -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Light Pages — Autumn Storybook</title>
+
+  <!-- CSS dipisah -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>Light Pages 🍂</h1>
+  <p>ruang belajar santai — pelan tapi nyampe</p>
+
+  <!-- Hamburger Menu -->
+  <div class="menu" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- Collapsible Menu -->
+<div id="collapseMenu" class="collapse-menu">
+  <div class="close-menu" onclick="toggleMenu()">←</div>
+
+  <h3>Light Pages</h3>
+  <p class="soft">ruang kecil buat belajar dan bernapas</p>
+
+  <div class="collapse-section">
+    <h4>Kesan & Pesan</h4>
+    <textarea id="message" placeholder="tulis pesan anonim di sini..."></textarea>
+    <button onclick="sendMessage()">kirim</button>
+  </div>
+
+  <div class="collapse-section">
+    <h4>Temui kami</h4>
+    <a href="#" target="_blank">Instagram</a>
+    <a href="#" target="_blank">TikTok</a>
+  </div>
+</div>
+
+<nav>
+  <button onclick="showJenjang('sd')">SD</button>
+  <button onclick="showJenjang('smp')">SMP</button>
+  <button onclick="showJenjang('sma')">SMA</button>
+  <button onclick="showJenjang('kuliah')">Kuliah</button>
+</nav>
+
+<main>
+  <!-- SD -->
+  <section id="sd" class="jenjang active">
+  <h2>Sekolah Dasar</h2>
+  <p class="quote">belajar itu bukan soal cepat, tapi soal berani mulai 🌱</p>
+  <div class="kelas">
+    <a href="https://drive.google.com/drive/folders/1QgoDFB3RjB5qvxF0e3gHsuo5Ga_cOx0y?usp=drive_link" target="_blank">Kelas 1</a>
+    <a href="https://drive.google.com/drive/folders/1P6NLExelU2I5F1k-Yc7m28KJs38lyl2B?usp=drive_link" target="_blank">Kelas 2</a>
+    <a href="https://drive.google.com/drive/folders/1yutbMHkM4htLJG2q9wr5Fsa0nab1F2cx?usp=drive_link" target="_blank">Kelas 3</a>
+    <a href="https://drive.google.com/drive/folders/17qZVwLF3mjKLugTKYEJXpB-bg9D9rmtD?usp=drive_link" target="_blank">Kelas 4</a>
+    <a href="https://drive.google.com/drive/folders/1XhqOA0MEcTHxeofLdLbi-D6IqXpLFoCL?usp=drive_link" target="_blank">Kelas 5</a>
+    <a href="https://drive.google.com/drive/folders/1pe38zbUIZLN7LwWjx1OHYVbdpQvtL4xI?usp=drive_link" target="_blank">Kelas 6</a>
+  </div>
+</section>
+
+  <!-- SMP -->
+  <section id="smp" class="jenjang">
+  <h2>SMP</h2>
+  <p class="quote">kalau bingung, berhenti sebentar juga gapapa 🍂</p>
+  <div class="kelas">
+    <a href="https://drive.google.com/drive/folders/1caMiiZ5OU4pyvjaOOlRe0K1Ps0zVMv3V?usp=drive_link" target="_blank">Kelas 1</a>
+    <a href="https://drive.google.com/drive/folders/1JnAO8oHe15G7OAO3waRX_1usTvgiB74z?usp=drive_link" target="_blank">Kelas 2</a>
+    <a href="https://drive.google.com/drive/folders/1KjdSjH6--QnxPr2-GN4oWHT7k0_l6nj9?usp=drive_link" target="_blank">Kelas 3</a>
+  </div>
+</section>
+
+  <!-- SMA -->
+  <section id="sma" class="jenjang">
+  <h2>SMA</h2>
+  <p class="quote">kamu gak harus paham semuanya hari ini 🤍</p>
+  <div class="kelas">
+    <a href="https://drive.google.com/drive/folders/1IolKZq1V7y2VG1ijd2FdgKwOa5ehjmm1?usp=drive_link" target="_blank">Kelas 1</a>
+    <a href="https://drive.google.com/drive/folders/1JsOg8YlFiOOLRfmKWljp8_El2FZPPrmX?usp=drive_link" target="_blank">Kelas 2</a>
+    <a href="https://drive.google.com/drive/folders/1RXAQCqDbAaiSeogXvMYyn71YakckLFRT?usp=drive_link" target="_blank">Kelas 3</a>
+  </div>
+</section>
+
+  <!-- Kuliah -->
+  <section id="kuliah" class="jenjang">
+  <h2>Kuliah & Tambahan</h2>
+  <p class="quote">belajar dewasa itu seringkali sunyi, tapi kamu gak sendiri</p>
+  <div class="kelas">
+    <a href="https://drive.google.com/drive/folders/1McG4k0PA1KtviZZzoy8HQRDYWpGS8tF_?usp=drive_link" target="_blank">Semester 1</a>
+    <a href="https://drive.google.com/drive/folders/1sZp8WbGVzlh1yTxBOq9YftnrUHx74yUi?usp=drive_link" target="_blank">Semester 2</a>
+    <a href="https://drive.google.com/drive/folders/1xsNZldEuhALz_Xr0kONlKRWKRsiBNx9W?usp=drive_link" target="_blank">Semester 3</a>
+    <a href="https://drive.google.com/drive/folders/1MTi6Y3RhxAq1CCvOJNwgnwJzXjYA3a5j?usp=drive_link" target="_blank">Semester 4</a>
+    <a href="#">Semester 5</a>
+    <a href="#">Semester 6</a>
+    <a href="#">Semester 7</a>
+    <a href="#">Semester 8</a>
+  </div>
+</main>
+
+<<footer>
+  <p>© Light Pages — satu halaman juga berarti</p>
+</footer>
+
+<!-- JS dipisah -->
+<script src="script.js"></script>
+</body>
+</html>
+
