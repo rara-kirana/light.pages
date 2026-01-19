@@ -149,3 +149,9 @@ footer {
   z-index: 1001;
 }
 
+.collapse-section a {
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
